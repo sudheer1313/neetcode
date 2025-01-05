@@ -1,4 +1,3 @@
-RotateImage.py
 
 
 class Solution:
