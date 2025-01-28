@@ -1,19 +1,36 @@
-
-
-
 class Solution:
-    def findLength(self, nums1: List[int], nums2: List[int]) -> int:
-        str1 = "".join(map(str, nums1))
-        str2 = "".join(map(str, nums2))
-        maxi = 0
-        for i in range(len(str1)):
-            s = ""
-            for j in range(i, len(str1)):
-                s += str1[j]
-                if s in str2:
-                    maxi = max(maxi, len(s))
-                else:
-                    break
-        return maxi
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        d1 = dict()
+        d2 = dict()
+        l = 0
+        li = []
+        if len(p) > len(s):
+            return []
+        for i in p:
+            if i in d1:
+                d1[i] += 1
+            else:
+                d1[i] = 1
+        for i in range(len(p)):
+            if s[i] in d2:
+                d2[s[i]] += 1
+            else:
+                d2[s[i]] = 1
+        if d1 == d2:
+            li.append(0)
+        for r in range(len(p), len(s)):
+            d2[s[l]] -= 1
+            if d2[s[l]] <= 0:
+                d2.pop(s[l])
+            l += 1
+            if s[r] in d2:
+                d2[s[r]] += 1
+            else:
+                d2[s[r]] = 1
+            if d1 == d2:
+                li.append(l)
+        return li
+
+
 
 
