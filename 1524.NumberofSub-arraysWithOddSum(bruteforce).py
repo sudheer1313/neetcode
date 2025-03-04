@@ -1,4 +1,4 @@
-1524.NumberofSub-arraysWithOddSum(bruteforce).py
+
 
 
 class Solution:
